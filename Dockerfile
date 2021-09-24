@@ -9,3 +9,4 @@ COPY laravel /var/www/html
 WORKDIR /var/www/html
 RUN chmod 777 storage -R
 RUN chmod 777 vendor -R
+RUN chmod 777 bootstrap/cache/ -R
