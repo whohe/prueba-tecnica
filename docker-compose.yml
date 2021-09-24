@@ -5,10 +5,11 @@ services:
   mysql:
     image: mysql
     restart: always
-    volumes:
-     - /opt/mysql-data:/var/lib/mysql/data
     environment:
       MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: secret
   app:
     build:
       context: "$PWD"
@@ -17,8 +18,8 @@ services:
      - "mysql:db"
     ports:
       - 80:80
-    volumes:
-     - ./src:/var/www/html
+        #volumes:
+        #- ./laravel:/var/www/html
     restart: always
     tty: true
     stdin_open: true
